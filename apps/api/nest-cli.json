@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "builder": "swc",
+    "deleteOutDir": true,
+    "assets": [
+      {
+        "include": "**/*.hbs",
+        "outDir": "dist",
+        "watchAssets": true
+      },
+      {
+        "include": "database/migrations/**/*.ts",
+        "outDir": "dist",
+        "watchAssets": false
+      },
+      {
+        "include": "i18n/**/*",
+        "outDir": "dist",
+        "watchAssets": true
+      }
+    ]
+  }
+}

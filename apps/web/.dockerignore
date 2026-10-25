@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+coverage
+dist
+test-results
+playwright-report
+.DS_Store
+.idea
+.vscode

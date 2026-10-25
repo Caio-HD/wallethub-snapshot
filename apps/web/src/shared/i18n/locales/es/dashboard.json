@@ -1,0 +1,49 @@
+{
+  "budget": {
+    "title": "Presupuesto mensual",
+    "estimatedIncome": "Ingresos medios estimados",
+    "aggregatedLimit": "Límite agregado",
+    "difference": "Diferencia (ingresos − límite)",
+    "expenses": "Gastos en el período",
+    "limitUsage": "{value}% del límite agregado"
+  },
+  "buttons": {
+    "recalculando": "Recalculando…",
+    "recalcular": "Recalcular panel",
+    "exportando": "Exportando…",
+    "exportarCSV": "Exportar CSV"
+  },
+  "kpi": {
+    "balance": "Saldo",
+    "totalIncome": "Ingresos",
+    "totalExpense": "Gastos"
+  },
+  "filters": {
+    "allAccounts": "Todas las cuentas",
+    "byMonth": "Por mes",
+    "byRange": "Por intervalo"
+  },
+  "trend": {
+    "up": "En aumento",
+    "down": "En descenso",
+    "flat": "Estable"
+  },
+  "cards": {
+    "loading": "Cargando…",
+    "accountBalances": {
+      "title": "Saldo por cuenta",
+      "empty": "No se encontraron cuentas"
+    },
+    "topTransactions": {
+      "title": "Mayores transacciones",
+      "empty": "Sin transacciones en el período",
+      "noDescription": "Sin descripción"
+    },
+    "projection": {
+      "title": "Proyección mensual",
+      "income": "Ingresos proyectados",
+      "expense": "Gastos proyectados",
+      "balance": "Saldo proyectado"
+    }
+  }
+}

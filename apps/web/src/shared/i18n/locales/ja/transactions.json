@@ -1,0 +1,31 @@
+{
+  "title": "取引",
+  "table": {
+    "date": "日付",
+    "description": "説明",
+    "category": "カテゴリー",
+    "amount": "金額",
+    "status": "ステータス"
+  },
+  "status": {
+    "pending": "保留中",
+    "completed": "完了",
+    "failed": "失敗"
+  },
+  "actions": {
+    "add": "新しい取引",
+    "edit": "編集",
+    "delete": "削除",
+    "filter": "フィルタ"
+  },
+  "empty": "取引が見つかりません。",
+  "form": {
+    "transfer": "振替",
+    "fromAccountLabel": "振替元口座",
+    "toAccountLabel": "振替先口座",
+    "validation": {
+      "toAccountRequired": "振替先口座は必須です",
+      "toAccountSame": "振替元と振替先は異なる必要があります"
+    }
+  }
+}

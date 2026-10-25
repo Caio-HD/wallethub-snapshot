@@ -1,0 +1,31 @@
+{
+  "title": "交易记录",
+  "table": {
+    "date": "日期",
+    "description": "描述",
+    "category": "类别",
+    "amount": "金额",
+    "status": "状态"
+  },
+  "status": {
+    "pending": "待处理",
+    "completed": "已完成",
+    "failed": "失败"
+  },
+  "actions": {
+    "add": "新增交易",
+    "edit": "编辑",
+    "delete": "删除",
+    "filter": "筛选"
+  },
+  "empty": "未找到交易记录。",
+  "form": {
+    "transfer": "转账",
+    "fromAccountLabel": "转出账户",
+    "toAccountLabel": "转入账户",
+    "validation": {
+      "toAccountRequired": "转入账户为必填项",
+      "toAccountSame": "转出和转入账户必须不同"
+    }
+  }
+}

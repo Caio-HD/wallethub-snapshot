@@ -1,0 +1,98 @@
+# Dependências
+node_modules/
+
+# CLI Python (venv criado automaticamente em tools/cli-py)
+tools/cli-py/.venv/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+api_logs.txt
+lint_api.txt
+lint_out.txt
+apps/api/*.txt
+
+# Diretórios de build/output
+dist/
+build/
+# Brand gerados: versionados em public/brand/ (fonte Sharp ainda local-only em .cache/brand/)
+apps/web/.cache/brand/
+tmp/
+temp/
+ops/ci/artifacts/
+ops/dev/artifacts/
+ops/dev/volumes/
+ops/prod/artifacts/
+ops/prod/backups/
+services/web/test-results/
+
+# Testes e cobertura
+coverage/
+.nyc_output/
+
+# Arquivos de ambiente e credenciais
+.env
+.env.*
+secrets/
+ops/prod/env.deploy.local
+# Arquivos paas: gerados automaticamente, podem conter secrets — não versionar
+ops/paas/.env
+ops/paas/docker-compose.yml
+# config/:
+# Ignorar tudo em config/ exceto os exemplos versionados
+config/*
+!config/.env.production.example
+!config/.env.local.example
+
+# Cloudflared
+.Cloudflared
+.cloudflared/
+
+# Turborepo
+.turbo/
+
+# Runtime/CLI metadata
+.wallethub/
+.docker-workflow/
+
+# Ferramentas e editores
+.vscode/
+.idea/
+*.swp
+*.session.sql
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Cache diversas ferramentas
+.parcel-cache/
+.cache/
+.eslintcache
+__pycache__/
+*.pyc
+
+# Emissões acidentais de tsc em workspaces
+apps/web/src/**/*.js
+!apps/web/src/test/setup.js
+
+# Relatórios
+*.tgz
+*.tsbuildinfo
+
+# Scripts temporários de migration
+.migration-runner-*.js
+
+# Recuperação da WIP + segredos/artefatos de deploy (fora do versionamento)
+.recovery/
+.secrets/
+.deploy/
+.deploy-*
+
+# Backups pré-deploy (dl_db_backup) — artefatos locais, nunca versionados
+/backups/

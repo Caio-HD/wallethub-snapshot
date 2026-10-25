@@ -1,0 +1,16 @@
+{
+  "terminal": {
+    "moduleOverview": "WALLET_HUB::INVEST_MODULE_OVR",
+    "dashboardTitle": "PORTFOLIO_DASHBOARD_v3",
+    "terminalVersion": "PRO_TERMINAL_2026",
+    "equityTotal": "Equity_Total ({baseCurrency})",
+    "netProfitLabel": "(صافي_الربح)",
+    "activePositions": "التدفق_للمراكز_النشطة",
+    "systemLogs": "سجلات_النظام",
+    "recalculatingAlphaBeta": "[10:44:00] - إعادة_حساب_ألفا_بيتا... OK",
+    "syncingExternalBenchmark": "[10:44:01] - المزامنة_مع_المعيار_الخارجي... OK",
+    "coreMetricsUpdate": "[10:44:02] - تحديث_المقاييس_الأساسية: TWR={(metrics?.twr || 0).toFixed(4)}",
+    "systemReady": "> _ النظام_جاهز_V3_نشيط",
+    "alphaBetaMetricsDescription": "مقاييس ألفا وبيتا محسوبة بالمقارنة مع المعيار القياسي (Ibovespa/S&P500) بناءً علىhistorical data لمدة 6 أشهر."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.node.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
+    "types": ["vite/client"],
+    "paths": {
+      "@shared/*": ["shared/*"],
+      "@entities/*": ["entities/*"],
+      "@features/*": ["features/*"],
+      "@app/*": ["app/*"],
+      "@pages/*": ["pages/*"],
+      "@wallethub/theme": ["../../packages/theme/src/index.ts"]
+    }
+  },
+  "include": ["src", "../../packages/theme/src"],
+  "exclude": ["dist"]
+}

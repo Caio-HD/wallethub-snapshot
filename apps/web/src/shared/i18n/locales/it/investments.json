@@ -1,0 +1,16 @@
+{
+  "terminal": {
+    "moduleOverview": "WALLET_HUB::INVEST_MODULE_OVR",
+    "dashboardTitle": "PORTFOLIO_DASHBOARD_v3",
+    "terminalVersion": "PRO_TERMINAL_2026",
+    "equityTotal": "Equity_Total ({baseCurrency})",
+    "netProfitLabel": "(Utile_Netto)",
+    "activePositions": "POSIZIONI_ATTIVE_STREAM",
+    "systemLogs": "LOG_DI_SISTEMA",
+    "recalculatingAlphaBeta": "[10:44:00] - RICALCOLO_ALPHA_BETA... OK",
+    "syncingExternalBenchmark": "[10:44:01] - SINCRONIZZAZIONE_BENCHMARK_ESTERNO... OK",
+    "coreMetricsUpdate": "[10:44:02] - AGGIORNAMENTO_METRICHE_NUCLEO: TWR={(metrics?.twr || 0).toFixed(4)}",
+    "systemReady": "> _ SISTEMA_PRONTO_V3_ATTIVO",
+    "alphaBetaMetricsDescription": "Le metriche di Alpha e Beta vengono calcolate rispetto al benchmark standard (Ibovespa/S&P500) sulla base dello storico di 6 mesi."
+  }
+}

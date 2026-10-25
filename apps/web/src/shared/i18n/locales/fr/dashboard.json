@@ -1,0 +1,49 @@
+{
+  "budget": {
+    "title": "Budget mensuel",
+    "estimatedIncome": "Revenus moyens estimés",
+    "aggregatedLimit": "Limite agrégé",
+    "difference": "Différence (revenus − limite)",
+    "expenses": "Dépenses de la période",
+    "limitUsage": "{value}% de la limite agrégée"
+  },
+  "buttons": {
+    "recalculando": "Recalcul en cours…",
+    "recalcular": "Recalculer le tableau de bord",
+    "exportando": "Exportation en cours…",
+    "exportarCSV": "Exporter en CSV"
+  },
+  "kpi": {
+    "balance": "Solde",
+    "totalIncome": "Revenus",
+    "totalExpense": "Dépenses"
+  },
+  "filters": {
+    "allAccounts": "Tous les comptes",
+    "byMonth": "Par mois",
+    "byRange": "Par période"
+  },
+  "trend": {
+    "up": "En hausse",
+    "down": "En baisse",
+    "flat": "Stable"
+  },
+  "cards": {
+    "loading": "Chargement…",
+    "accountBalances": {
+      "title": "Solde par compte",
+      "empty": "Aucun compte trouvé"
+    },
+    "topTransactions": {
+      "title": "Principales transactions",
+      "empty": "Aucune transaction sur la période",
+      "noDescription": "Sans description"
+    },
+    "projection": {
+      "title": "Projection mensuelle",
+      "income": "Revenus projetés",
+      "expense": "Dépenses projetées",
+      "balance": "Solde projeté"
+    }
+  }
+}

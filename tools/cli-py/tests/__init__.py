@@ -1,0 +1,2 @@
+"""Testes da CLI WalletHub"""
+

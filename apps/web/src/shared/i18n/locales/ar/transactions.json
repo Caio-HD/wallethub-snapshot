@@ -1,0 +1,31 @@
+{
+  "title": "المعاملات",
+  "table": {
+    "date": "التاريخ",
+    "description": "الوصف",
+    "category": "الفئة",
+    "amount": "المبلغ",
+    "status": "الحالة"
+  },
+  "status": {
+    "pending": "قيد الانتظار",
+    "completed": "مكتملة",
+    "failed": "فشلت"
+  },
+  "actions": {
+    "add": "معاملة جديدة",
+    "edit": "تحرير",
+    "delete": "حذف",
+    "filter": "تصفية"
+  },
+  "empty": "لم يتم العثور على معاملات.",
+  "form": {
+    "transfer": "تحويل",
+    "fromAccountLabel": "من (حساب المصدر)",
+    "toAccountLabel": "إلى (حساب الوجهة)",
+    "validation": {
+      "toAccountRequired": "حساب الوجهة مطلوب",
+      "toAccountSame": "يجب أن يختلف المصدر عن الوجهة"
+    }
+  }
+}

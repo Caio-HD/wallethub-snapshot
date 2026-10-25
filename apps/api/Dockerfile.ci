@@ -1,0 +1,54 @@
+# Etapas de build e testes para WalletHub API
+ARG NODE_VERSION=22
+
+FROM node:${NODE_VERSION}-bookworm AS base
+WORKDIR /app
+ENV CI=1 \
+    npm_config_loglevel=warn \
+    npm_config_ignore_scripts=true \
+    SKIP_WALLETHUB_CLI_PREPARE=1
+COPY package.json package-lock.json ./
+COPY apps ./apps
+COPY packages ./packages
+COPY tools ./tools
+RUN npm ci --workspaces --include-workspace-root --ignore-scripts
+ENV npm_config_ignore_scripts= \
+    SKIP_WALLETHUB_CLI_PREPARE=
+WORKDIR /app/apps/api
+
+FROM base AS deps
+
+FROM deps AS test
+ENV NODE_ENV=test
+# Os testes são executados em tempo de pipeline usando esta imagem/stage.
+
+FROM deps AS build
+RUN npm run build
+
+FROM node:${NODE_VERSION}-bookworm AS prod-deps
+WORKDIR /app
+ENV NODE_ENV=production \
+    npm_config_ignore_scripts=true \
+    SKIP_WALLETHUB_CLI_PREPARE=1
+COPY package.json package-lock.json ./
+COPY apps ./apps
+COPY packages ./packages
+COPY tools ./tools
+RUN npm ci --omit=dev --workspaces --include-workspace-root --ignore-scripts
+ENV npm_config_ignore_scripts= \
+    SKIP_WALLETHUB_CLI_PREPARE=
+WORKDIR /app/apps/api
+
+FROM node:${NODE_VERSION}-bookworm AS release
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=prod-deps /app/apps/api/package.json ./package.json
+COPY --from=prod-deps /app/node_modules ./node_modules
+COPY --from=prod-deps /app/apps/api/node_modules ./api_node_modules
+RUN cp -R ./api_node_modules/. ./node_modules && rm -rf ./api_node_modules
+COPY --from=build /app/apps/api/dist ./dist
+COPY --from=build /app/apps/api/scripts ./scripts
+EXPOSE 3000
+# Migrações NÃO rodam no boot: são passo explícito do deploy.sh (após backup
+# bloqueante + gate de migrations). Manual: docker compose run --rm api npm run migration:run
+CMD ["node", "dist/main.js"]

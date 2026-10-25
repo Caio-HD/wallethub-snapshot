@@ -1,0 +1,19 @@
+{
+  "title": "Comptes",
+  "subtitle": "Gérez vos comptes bancaires",
+  "empty": "Aucun compte trouvé.",
+  "addAccount": "Ajouter un compte",
+  "editAccount": "Modifier un compte",
+  "deleteAccount": "Supprimer un compte",
+  "accountName": "Nom du compte",
+  "bankName": "Nom de la banque",
+  "accountType": "Type de compte",
+  "balance": "Solde",
+  "actions": "Actions",
+  "owners": "Propriétaires",
+  "save": "Enregistrer",
+  "cancel": "Annuler",
+  "confirmDelete": "Êtes-vous sûr de vouloir supprimer ce compte ?",
+  "deleteSuccess": "Compte supprimé avec succès.",
+  "deleteError": "Erreur lors de la suppression du compte."
+}

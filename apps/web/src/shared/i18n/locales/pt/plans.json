@@ -1,0 +1,62 @@
+{
+  "header": {
+    "title": "Planos",
+    "description": "Auto-hospede gratuitamente ou escolha o plano ideal para sua organização."
+  },
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "badge": null,
+      "description": "Para uso pessoal e acompanhamento financeiro básico.",
+      "features": [
+        "Dashboard em tempo real",
+        "Transações ilimitadas",
+        "Categorias personalizadas",
+        "Integração WhatsApp",
+        "Multi-conta"
+      ],
+      "unavailable": [
+        "Importação CSV",
+        "IA assistente avançada",
+        "Multi-organização avançada"
+      ],
+      "cta": "Começar grátis",
+      "highlighted": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "badge": "Mais popular",
+      "description": "Para famílias e times que precisam de mais controle.",
+      "features": [
+        "Tudo do Free",
+        "Importação de extratos CSV",
+        "Quotas de IA no WhatsApp",
+        "Projeções avançadas",
+        "Relatórios exportáveis"
+      ],
+      "unavailable": [
+        "Multi-organização avançada"
+      ],
+      "cta": "Começar com Pro",
+      "highlighted": true
+    },
+    {
+      "id": "plus",
+      "name": "Plus",
+      "badge": null,
+      "description": "Para empresas com múltiplos espaços de trabalho e dados complexos.",
+      "features": [
+        "Tudo do Pro",
+        "Multi-organização avançada",
+        "RAG por organização",
+        "Configurações de IA por org",
+        "Papéis e permissões granulares"
+      ],
+      "unavailable": [],
+      "cta": "Explorar Plus",
+      "highlighted": false
+    }
+  ]
+}

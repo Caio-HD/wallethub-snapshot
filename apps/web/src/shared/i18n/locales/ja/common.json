@@ -1,0 +1,26 @@
+{
+  "toast": {
+    "dashboardRecalculoSuccess": "ダッシュボードの再計算が正常に要求されました。",
+    "dashboardRecalculoError": "ダッシュボードの再計算を要求できませんでした。"
+  },
+  "navbar": {
+    "login": "ログイン"
+  },
+  "footer": {
+    "copyright": "© {{year}} WalletHub · セルフホスト型金融アプリケーション · 全著作権所有。",
+    "github": "GitHub",
+    "login": "ログイン"
+  },
+  "language": {
+    "selectLabel": "言語",
+    "pt": "ポルトガル語",
+    "en": "英語",
+    "es": "スペイン語",
+    "fr": "フランス語",
+    "de": "ドイツ語",
+    "it": "イタリア語",
+    "zh": "中国語",
+    "ja": "日本語",
+    "ar": "アラビア語"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Budget",
+  "limit": "Limit",
+  "income": "Einkommen",
+  "expenses": "Ausgaben",
+  "remaining": "Verbleibend",
+  "overLimit": "Über dem Limit",
+  "category": "Kategorie",
+  "noCategories": "Keine Kategorien definiert",
+  "addCategory": "Kategorie hinzufügen",
+  "editCategory": "Kategorie bearbeiten",
+  "deleteCategory": "Kategorie löschen",
+  "setLimit": "Limit festlegen",
+  "setIncome": "Einkommen festlegen",
+  "percentageUsed": "{value}% des Limits verwendet",
+  "warning": "Warnung: Sie liegen über dem Limit",
+  "info": "Ihr monatliches Limit beträgt {limit} und Sie haben {expenses} ausgegeben"
+}

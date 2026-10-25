@@ -1,0 +1,49 @@
+{
+  "budget": {
+    "title": "Budget mensile",
+    "estimatedIncome": "Reddito medio stimato",
+    "aggregatedLimit": "Limite aggregato",
+    "difference": "Differenza (reddito − limite)",
+    "expenses": "Spese nel periodo",
+    "limitUsage": "{value}% del limite aggregato"
+  },
+  "buttons": {
+    "recalculando": "Ricalcolo in corso…",
+    "recalcular": "Ricalcola dashboard",
+    "exportando": "Esportazione in corso…",
+    "exportarCSV": "Esporta CSV"
+  },
+  "kpi": {
+    "balance": "Saldo",
+    "totalIncome": "Entrate",
+    "totalExpense": "Uscite"
+  },
+  "filters": {
+    "allAccounts": "Tutti i conti",
+    "byMonth": "Per mese",
+    "byRange": "Per intervallo"
+  },
+  "trend": {
+    "up": "In aumento",
+    "down": "In calo",
+    "flat": "Stabile"
+  },
+  "cards": {
+    "loading": "Caricamento…",
+    "accountBalances": {
+      "title": "Saldo per conto",
+      "empty": "Nessun conto trovato"
+    },
+    "topTransactions": {
+      "title": "Transazioni principali",
+      "empty": "Nessuna transazione nel periodo",
+      "noDescription": "Senza descrizione"
+    },
+    "projection": {
+      "title": "Proiezione mensile",
+      "income": "Entrate previste",
+      "expense": "Uscite previste",
+      "balance": "Saldo previsto"
+    }
+  }
+}

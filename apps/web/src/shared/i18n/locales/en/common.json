@@ -1,0 +1,51 @@
+{
+  "toast": {
+    "dashboardRecalculoSuccess": "Dashboard recalculation requested successfully.",
+    "dashboardRecalculoError": "Unable to request dashboard recalculation."
+  },
+  "navbar": {
+    "login": "Sign In"
+  },
+  "footer": {
+    "copyright": "© {{year}} WalletHub · Self-hosted financial application · All rights reserved.",
+    "github": "GitHub",
+    "login": "Login"
+  },
+  "language": {
+    "selectLabel": "Language",
+    "pt": "Portuguese",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+    "it": "Italian",
+    "zh": "Chinese",
+    "ja": "Japanese",
+    "ar": "Arabic"
+  },
+  "categories": {
+    "title": "Categories",
+    "subtitle": "Manage your transaction categories.",
+    "addCategory": "New Category",
+    "namePlaceholder": "Category name",
+    "income": "Income",
+    "expense": "Expense",
+    "confirmDeactivate": "Are you sure you want to deactivate this category?",
+    "namePlaceholderExample": "E.g.: Groceries",
+    "typeLabel": "Type",
+    "nameLabel": "Name",
+    "create": "Create",
+    "empty": "No active categories found.",
+    "clickToStart": "Click here to get started",
+    "toasts": {
+      "createSuccess": "Category created successfully",
+      "createError": "Error creating category",
+      "createDuplicate": "This name is already in use",
+      "updateSuccess": "Category updated",
+      "updateError": "Error updating category",
+      "deactivateSuccess": "Category deactivated",
+      "deactivateError": "Error deactivating category",
+      "reorderError": "Error reordering"
+    }
+  }
+}

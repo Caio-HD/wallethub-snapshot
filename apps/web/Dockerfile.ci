@@ -1,0 +1,59 @@
+# Etapas de build e testes para WalletHub Web
+ARG NODE_VERSION=22
+ARG NODE_DOWNLOAD_VERSION=22.12.0
+ARG PLAYWRIGHT_VERSION=1.48.2
+
+FROM mcr.microsoft.com/playwright:v${PLAYWRIGHT_VERSION}-jammy AS base-test
+ARG NODE_DOWNLOAD_VERSION
+WORKDIR /app
+ENV CI=1 \
+    npm_config_loglevel=warn \
+    npm_config_ignore_scripts=true \
+    SKIP_WALLETHUB_CLI_PREPARE=1
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ca-certificates curl xz-utils && \
+    rm -rf /var/lib/apt/lists/* && \
+    curl -fsSL https://nodejs.org/dist/v${NODE_DOWNLOAD_VERSION}/node-v${NODE_DOWNLOAD_VERSION}-linux-x64.tar.xz | \
+      tar -xJ -C /usr/local --strip-components=1
+COPY package.json package-lock.json ./
+COPY apps ./apps
+COPY packages ./packages
+COPY tools ./tools
+RUN npm ci --workspaces --include-workspace-root --ignore-scripts
+ENV npm_config_ignore_scripts= \
+    SKIP_WALLETHUB_CLI_PREPARE=
+WORKDIR /app/apps/web
+RUN npm install @rollup/rollup-linux-x64-gnu --save-optional || true
+RUN npm install @esbuild/linux-x64 --save-optional || true
+RUN npx playwright install --with-deps
+
+FROM base-test AS test
+ENV NODE_ENV=test
+# Os testes são executados durante o pipeline utilizando esta stage.
+
+FROM node:${NODE_VERSION}-bookworm AS build-deps
+WORKDIR /app
+ENV CI=1 \
+    npm_config_ignore_scripts=true \
+    SKIP_WALLETHUB_CLI_PREPARE=1
+COPY package.json package-lock.json ./
+COPY apps ./apps
+COPY packages ./packages
+COPY tools ./tools
+RUN npm ci --workspaces --include-workspace-root --ignore-scripts
+ENV npm_config_ignore_scripts= \
+    SKIP_WALLETHUB_CLI_PREPARE=
+WORKDIR /app/apps/web
+
+FROM build-deps AS build
+ARG VITE_API_URL=
+ENV VITE_API_URL=${VITE_API_URL}
+RUN npm install @rollup/rollup-linux-x64-gnu --save-optional || true
+RUN npm install @esbuild/linux-x64 --save-optional || true
+RUN npm run build
+
+FROM nginx:1.27-alpine AS production
+COPY apps/web/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/apps/web/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

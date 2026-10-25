@@ -1,0 +1,9 @@
+export const QUEUE_WHATSAPP_INBOUND = 'whatsapp-inbound';
+export const QUEUE_WHATSAPP_OUTBOUND = 'whatsapp-outbound';
+export const QUEUE_TELEGRAM_INBOUND = 'telegram-inbound';
+export const QUEUE_TELEGRAM_OUTBOUND = 'telegram-outbound';
+export const QUEUE_PROJECTIONS = 'projections';
+export const QUEUE_ALERTS = 'alerts';
+export const QUEUE_NOTION_SYNC = 'notion-sync';
+export const QUEUE_NOTION_WEBHOOK = 'notion-webhook';
+export const QUEUE_INVESTMENT_QUOTES = 'investment-quotes';

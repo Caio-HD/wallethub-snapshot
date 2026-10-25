@@ -1,0 +1,83 @@
+{
+  "title": "Auditoria de Importações OFX",
+  "subtitle": "Importe, audite e gerencie extratos desta conta.",
+  "subtitleAll": "Todas as contas",
+  "back": "Voltar para Contas",
+  "tabs": {
+    "import": "Importar",
+    "batches": "Importações",
+    "categorize": "Categorizar",
+    "config": "Configuração"
+  },
+  "common": {
+    "loading": "Carregando…"
+  },
+  "categorize": {
+    "hint": "Classifique em lote as transações que entraram como \"Sem categoria\", agrupadas por descrição. Categorizar aqui ensina o sistema a classificar automaticamente as próximas importações do mesmo estabelecimento.",
+    "empty": "Nada pendente de categorização.",
+    "count_one": "{{count}} lançamento",
+    "count_other": "{{count}} lançamentos",
+    "income": "entrada",
+    "expense": "saída",
+    "selectCategory": "Selecionar categoria",
+    "apply": "Aplicar",
+    "noCategoryOfType": "Crie uma categoria deste tipo primeiro",
+    "applied_one": "{{count}} transação categorizada",
+    "applied_other": "{{count}} transações categorizadas",
+    "skipped_one": "{{count}} transação pulada",
+    "skipped_other": "{{count}} transações puladas",
+    "skippedHint": "Puladas por estarem vinculadas a uma dívida.",
+    "error": "Falha ao categorizar."
+  },
+  "import": {
+    "hint": "Importe um novo extrato CSV/OFX ou reprocesse um arquivo usando a pré-visualização (simulação) antes de gravar.",
+    "noCategories": "Cadastre ao menos uma categoria para importar extratos."
+  },
+  "batches": {
+    "empty": "Nenhuma importação registrada para esta conta.",
+    "view": "Ver",
+    "delete": "Excluir importação",
+    "count_one": "{{count}} transação",
+    "count_other": "{{count}} transações",
+    "liveOfTotal": "{{live}} de {{total}}",
+    "noBank": "Banco não detectado",
+    "noDescription": "(sem descrição)",
+    "emptyDetail": "Nenhuma transação ativa nesta importação."
+  },
+  "config": {
+    "bankTitle": "Vínculo banco ↔ conta",
+    "bankHint": "Banco, agência e conta permitem casar importações OFX automaticamente com esta conta.",
+    "bank": "Banco",
+    "bankPlaceholder": "Buscar banco por nome ou código…",
+    "branch": "Agência",
+    "account": "Conta",
+    "save": "Salvar",
+    "mappingsTitle": "Mapeamento de categorias",
+    "mappingsHint": "Descrições conhecidas são categorizadas automaticamente em importações futuras.",
+    "description": "Descrição",
+    "descriptionPlaceholder": "Ex: PIX MERCADO",
+    "category": "Categoria",
+    "selectCategory": "Selecionar categoria…",
+    "add": "Adicionar",
+    "mappingsEmpty": "Nenhum mapeamento cadastrado.",
+    "removeMapping": "Remover mapeamento"
+  },
+  "delete": {
+    "title": "Excluir importação?",
+    "body": "Isto remove a importação \"{{filename}}\" e todas as transações vinculadas a ela. Esta ação não pode ser desfeita.",
+    "cancel": "Cancelar",
+    "confirm": "Excluir importação"
+  },
+  "toasts": {
+    "bankSaved": "Vínculo bancário atualizado",
+    "bankError": "Erro ao salvar vínculo bancário",
+    "deleted_one": "{{count}} transação excluída",
+    "deleted_other": "{{count}} transações excluídas",
+    "deleteError": "Erro ao excluir importação",
+    "skipped_one": "{{count}} transação mantida (vinculada a uma dívida)",
+    "skipped_other": "{{count}} transações mantidas (vinculadas a dívidas)",
+    "skippedHint": "Transações vinculadas a uma dívida não são excluídas. Desvincule-as pela dívida primeiro.",
+    "mappingAdded": "Mapeamento adicionado",
+    "mappingError": "Erro ao adicionar mapeamento"
+  }
+}

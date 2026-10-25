@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "wallethub-cli"
+version = "0.1.0"
+description = "Ferramenta de Developer Experience para WalletHub"
+authors = ["WalletHub Team"]
+readme = "README.md"
+packages = [{include = "wallethub"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+typer = "^0.15.0"
+rich = "^13.0.0"
+questionary = "^2.0.0"
+click = "^8.0.0"
+# >=68: compatível com Python 3.12+ (pkgutil.ImpImporter removido; setuptools antigo quebrava)
+setuptools = "^69.0.0"
+tenacity = "^8.0.0"
+pydantic = "^2.0.0"
+python-dotenv = "^1.0.0"
+pyyaml = "^6.0.0"
+requests = "^2.31.0"
+cryptography = "^41.0.0"
+
+[tool.poetry.scripts]
+wallethub = "wallethub.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0.0"
+pytest-cov = "^4.0.0"
+black = "^23.0.0"
+ruff = "^0.1.0"
+mypy = "^1.0.0"
+

@@ -1,0 +1,18 @@
+{
+  "title": "予算",
+  "limit": "限度額",
+  "income": "収入",
+  "expenses": "支出",
+  "remaining": "残高",
+  "overLimit": "限度額超過",
+  "category": "カテゴリー",
+  "noCategories": "カテゴリーが定義されていません",
+  "addCategory": "カテゴリーを追加",
+  "editCategory": "カテゴリーを編集",
+  "deleteCategory": "カテゴリーを削除",
+  "setLimit": "限度額を設定",
+  "setIncome": "収入を設定",
+  "percentageUsed": "{value}% の限度額が使用されました",
+  "warning": "警告: 限度額を超えています",
+  "info": "あなたの月間限度額は {limit} で、あなたは {expenses} を費やしました"
+}

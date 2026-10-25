@@ -1,0 +1,26 @@
+{
+  "toast": {
+    "dashboardRecalculoSuccess": "Recalculo da dashboard solicitado com sucesso.",
+    "dashboardRecalculoError": "Não foi possível solicitar o recálculo da dashboard."
+  },
+  "navbar": {
+    "login": "Entrar"
+  },
+  "footer": {
+    "copyright": "© {{year}} WalletHub · Aplicação financeira auto-hospedável · Todos os direitos reservados.",
+    "github": "GitHub",
+    "login": "Login"
+  },
+  "language": {
+    "selectLabel": "Idioma",
+    "pt": "Português",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch",
+    "it": "Italiano",
+    "zh": "中文",
+    "ja": "日本語",
+    "ar": "العربية"
+  }
+}

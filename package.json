@@ -1,0 +1,31 @@
+{
+  "name": "wallethub-workspace",
+  "private": true,
+  "packageManager": "npm@10.8.2",
+  "workspaces": [
+    "apps/api",
+    "apps/web",
+    "packages/*"
+  ],
+  "scripts": {
+    "WalletHub": "wallethub menu",
+    "wallethub": "wallethub",
+    "cli": "wallethub",
+    "ci": "wallethub ci",
+    "setup": "wallethub setup",
+    "dev:up": "wallethub dev up",
+    "dev:down": "wallethub dev down",
+    "diagnose": "wallethub diagnose",
+    "validate-build": "turbo run validate-build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "build": "turbo run build"
+  },
+  "dependencies": {
+    "class-transformer": "^0.5.1"
+  },
+  "devDependencies": {
+    "gensync": "^1.0.0-beta.2",
+    "turbo": "^2.8.20"
+  }
+}

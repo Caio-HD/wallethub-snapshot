@@ -1,0 +1,18 @@
+{
+  "title": "预算",
+  "limit": "限额",
+  "income": "收入",
+  "expenses": "支出",
+  "remaining": "剩余",
+  "overLimit": "超出限额",
+  "category": "类别",
+  "noCategories": "未定义类别",
+  "addCategory": "添加类别",
+  "editCategory": "编辑类别",
+  "deleteCategory": "删除类别",
+  "setLimit": "设置限额",
+  "setIncome": "设置收入",
+  "percentageUsed": "{value}% 的限额已用",
+  "warning": "警告：您已超出限额",
+  "info": "您的月度限额为 {limit}，已花费 {expenses}"
+}

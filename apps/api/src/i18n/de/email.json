@@ -1,0 +1,15 @@
+{
+  "otp": {
+    "subject": "Ihr WalletHub-Bestätigungscode",
+    "preview": "Verwenden Sie diesen Code, um sich sicher anzumelden.",
+    "heading": "Bestätigen Sie Ihre E-Mail",
+    "body": "Verwenden Sie den folgenden Code, um Ihre Anmeldung bei WalletHub abzuschließen.",
+    "codeLabel": "Ihr Code",
+    "expires": "Läuft in {{ttl}} ab.",
+    "security": "Wenn Sie diesen Code nicht angefordert haben, ignorieren Sie diese E-Mail. Teilen Sie Ihren Code niemals.",
+    "footer": "WalletHub · Ihre persönlichen Finanzen",
+    "smsBody": "WalletHub: Ihr Code ist {{otp}} (läuft in {{ttl}} ab).",
+    "whatsappHeading": "Bestätigen Sie Ihre Nummer",
+    "whatsappBody": "Verwenden Sie den folgenden Code, um Ihre Anmeldung bei WalletHub abzuschließen."
+  }
+}

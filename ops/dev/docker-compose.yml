@@ -1,0 +1,232 @@
+x-default-env: &default-env
+  POSTGRES_DB: ${POSTGRES_DB:-wallethub}
+  POSTGRES_USER: ${POSTGRES_USER:-wallethub}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-wallethub}
+
+# Variáveis de ambiente para portas (valores padrão acima de 3030)
+x-port-env: &port-env
+  WALLETHUB_API_PORT: ${WALLETHUB_API_PORT:-3031}
+  WALLETHUB_WEB_PORT: ${WALLETHUB_WEB_PORT:-3030}
+  WALLETHUB_WEB_SECURE_PORT: ${WALLETHUB_WEB_SECURE_PORT:-30443}
+  WALLETHUB_POSTGRES_PORT: ${WALLETHUB_POSTGRES_PORT:-30332}
+  WALLETHUB_REDIS_PORT: ${WALLETHUB_REDIS_PORT:-30379}
+  WALLETHUB_ADMINER_PORT: ${WALLETHUB_ADMINER_PORT:-30380}
+  WALLETHUB_API_INTERNAL_PORT: ${WALLETHUB_API_INTERNAL_PORT:-3001}
+  WALLETHUB_WEB_INTERNAL_PORT: ${WALLETHUB_WEB_INTERNAL_PORT:-3000}
+  WALLETHUB_TRAEFIK_DASHBOARD_PORT: ${WALLETHUB_TRAEFIK_DASHBOARD_PORT:-30399}
+
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg15
+    container_name: wallethub_postgres
+    restart: unless-stopped
+    environment:
+      <<: *default-env
+      PGDATA: /var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
+      - ./backups/postgres:/var/backups
+    ports:
+      - "${WALLETHUB_POSTGRES_PORT:-30332}:5432"
+    networks:
+      - wallethub_local
+
+  redis:
+    image: redis:7-alpine
+    container_name: wallethub_redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - ./volumes/redis:/data
+    ports:
+      - "${WALLETHUB_REDIS_PORT:-30379}:6379"
+    networks:
+      - wallethub_local
+
+  adminer:
+    image: adminer:4
+    container_name: wallethub_adminer
+    restart: unless-stopped
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "${WALLETHUB_ADMINER_PORT:-30380}:8080"
+    volumes:
+      - ./adminer/theme.css:/var/www/html/adminer.css:ro
+    networks:
+      - wallethub_local
+
+  api:
+    build:
+      context: ../..
+      dockerfile: apps/api/Dockerfile.dev
+      args:
+        NODE_VERSION: ${NODE_VERSION:-20}
+        API_PORT: ${WALLETHUB_API_INTERNAL_PORT:-3001}
+    container_name: wallethub_api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    # Carrega chaves JWT do arquivo secrets/jwt/.env.jwt
+    env_file:
+      - ../../secrets/jwt/.env.jwt
+    environment:
+      <<: *default-env
+      # Variáveis de porta
+      WALLETHUB_API_PORT: ${WALLETHUB_API_PORT:-3031}
+      WALLETHUB_WEB_PORT: ${WALLETHUB_WEB_PORT:-3030}
+      WALLETHUB_POSTGRES_PORT: ${WALLETHUB_POSTGRES_PORT:-30332}
+      WALLETHUB_REDIS_PORT: ${WALLETHUB_REDIS_PORT:-30379}
+      WALLETHUB_ADMINER_PORT: ${WALLETHUB_ADMINER_PORT:-30380}
+      WALLETHUB_API_INTERNAL_PORT: ${WALLETHUB_API_INTERNAL_PORT:-3001}
+      WALLETHUB_WEB_INTERNAL_PORT: ${WALLETHUB_WEB_INTERNAL_PORT:-3000}
+      NODE_ENV: development
+      DOCKER: "true"
+      # Resolução de módulos: raiz + workspace API (class-transformer está em apps/api/node_modules)
+      NODE_PATH: /app/node_modules:/app/apps/api/node_modules
+      PORT: ${WALLETHUB_API_INTERNAL_PORT:-3001}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: ${POSTGRES_USER:-wallethub}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-wallethub}
+      DB_NAME: ${POSTGRES_DB:-wallethub}
+      DB_SSL: "false"
+      DATABASE_URL: ${DATABASE_URL:-postgresql://${POSTGRES_USER:-wallethub}:${POSTGRES_PASSWORD:-wallethub}@postgres:5432/${POSTGRES_DB:-wallethub}}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_URL: redis://redis:6379
+      REDIS_TLS: "false"
+      # JWT - carregado automaticamente do env_file (../../secrets/jwt/.env.jwt)
+      # Outras variáveis de ambiente da API
+      API_PREFIX: ${API_PREFIX:-api}
+      TYPEORM_LOGGING: ${TYPEORM_LOGGING:-false}
+      TYPEORM_SYNCHRONIZE: ${TYPEORM_SYNCHRONIZE:-false}
+      TYPEORM_MIGRATIONS_RUN: ${TYPEORM_MIGRATIONS_RUN:-true}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-mock-google-id}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-mock-google-secret}
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-mock-github-id}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-mock-github-secret}
+    volumes:
+      # Monta repositório na raiz para resolver workspace (@wallethub/config) e hot-reload
+      - ../..:/app
+      # Volume nomeado sobrescreve node_modules; npm install no CMD popula na primeira execução
+      - api_node_modules:/app/node_modules
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:' + (process.env.PORT || '3001') + '/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 120s
+    networks:
+      - wallethub_local
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.api-dev.rule=PathPrefix(`/api`)
+      - traefik.http.routers.api-dev.entrypoints=web
+      - traefik.http.routers.api-dev.priority=20
+      - traefik.http.routers.api-dev.service=api-dev
+      - traefik.http.services.api-dev.loadbalancer.server.port=${WALLETHUB_API_INTERNAL_PORT:-3001}
+
+  web:
+    build:
+      context: ../..
+      dockerfile: apps/web/Dockerfile.dev
+      args:
+        NODE_VERSION: ${NODE_VERSION:-20}
+        WEB_PORT: ${WALLETHUB_WEB_INTERNAL_PORT:-3000}
+        API_INTERNAL_PORT: ${WALLETHUB_API_INTERNAL_PORT:-3001}
+    container_name: wallethub_web
+    restart: unless-stopped
+    # Evita proxy Vite → api:3001 com ECONNREFUSED (web subia antes do Nest escutar)
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      <<: *port-env
+      NODE_ENV: development
+      # Variável para indicar que está rodando em Docker
+      DOCKER: "true"
+      # Variáveis do Vite (precisa ter VITE_ prefix)
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:${WALLETHUB_WEB_PORT:-3030}/api}
+      # Porta da API interna (para o Vite construir a URL)
+      WALLETHUB_API_INTERNAL_PORT: ${WALLETHUB_API_INTERNAL_PORT:-3001}
+      VITE_API_INTERNAL_URL: http://api:${WALLETHUB_API_INTERNAL_PORT:-3001}
+      # Porta do Vite
+      PORT: ${WALLETHUB_WEB_INTERNAL_PORT:-3000}
+    volumes:
+      # Monta código fonte para hot-reload (raiz do projeto, pois o WORKDIR é /app/apps/web)
+      - ../..:/app
+      # Monta node_modules como volume nomeado para persistência
+      - web_node_modules:/app/apps/web/node_modules
+      # Ignora arquivos de build
+      - /app/apps/web/dist
+      - /app/apps/web/node_modules/.vite
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:' + (process.env.PORT || '3000'), (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - wallethub_local
+
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.web-dev.rule=PathPrefix(`/`)
+      - traefik.http.routers.web-dev.priority=10
+      - traefik.http.routers.web-dev.entrypoints=web
+      - traefik.http.routers.web-dev.service=web-dev
+      - traefik.http.services.web-dev.loadbalancer.server.port=${WALLETHUB_WEB_INTERNAL_PORT:-3000}
+
+  traefik:
+    image: traefik:v3.1
+    container_name: wallethub_traefik_dev
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_started
+      web:
+        condition: service_started
+    command:
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.dashboard.address=:8080
+      - --api.dashboard=true
+      - --log.level=INFO
+      - --serversTransport.insecureSkipVerify=true
+    ports:
+      - "${WALLETHUB_WEB_PORT:-3030}:80"
+      - "${WALLETHUB_WEB_SECURE_PORT:-30443}:443"
+      - "127.0.0.1:${WALLETHUB_TRAEFIK_DASHBOARD_PORT:-30399}:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - wallethub_local
+
+volumes:
+  api_node_modules:
+  web_node_modules:
+
+networks:
+  wallethub_local:
+    name: wallethub_local
+

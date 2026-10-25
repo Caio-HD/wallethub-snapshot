@@ -1,0 +1,150 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # Libera disco do runner antes dos builds Docker do monorepo (API + Web/Playwright).
+      # O runner ubuntu-latest tem ~14GB livres, insuficiente para os multi-stage builds
+      # (falhavam com "no space left on device"). Remoção dependency-free (~25GB liberados).
+      - name: Free disk space
+        run: |
+          echo "Antes:"; df -h /
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android \
+            /opt/hostedtoolcache/CodeQL /usr/local/share/boost \
+            /usr/local/share/powershell /usr/share/swift || true
+          sudo docker image prune --all --force || true
+          echo "Depois:"; df -h /
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+
+      - name: Install WalletHub CLI
+        run: pip install -e tools/cli-py
+
+      # NB: sem `npm install`/setup-node no host. `wallethub ci` roda tudo via docker compose; as
+      # deps Node vivem dentro das imagens (npm ci no Dockerfile.ci). Instalar no runner era
+      # trabalho duplicado (~1 min) que o pipeline não consumia.
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Docker version
+        run: |
+          docker version
+          docker compose version
+
+      - name: Run WalletHub pipeline
+        env:
+          # Fail-fast só em PRs (feedback rápido); main/develop rodam o pipeline completo.
+          WALLETHUB_CI_FAIL_FAST: ${{ github.event_name == 'pull_request' && '1' || '' }}
+          # Release artifacts só importam para o job Publish (push em main/develop).
+          WALLETHUB_CI_RELEASE: ${{ github.event_name == 'push' && '1' || '' }}
+        run: wallethub ci
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: wallethub-artifacts
+          path: ops/ci/artifacts
+          if-no-files-found: warn
+          retention-days: 7
+
+  publish:
+    name: Publish Images
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: build-test
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+        with:
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Detect Docker Hub credentials
+        id: dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          if [ -n "$DOCKERHUB_USERNAME" ] && [ -n "$DOCKERHUB_TOKEN" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Log in to Docker Hub
+        if: steps.dockerhub.outputs.ready == 'true'
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push API image
+        if: steps.dockerhub.outputs.ready == 'true'
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: ./apps/api/Dockerfile.ci
+          target: release
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/wallethub-api:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/wallethub-api:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            NODE_VERSION=22
+
+      - name: Build and push Web image
+        if: steps.dockerhub.outputs.ready == 'true'
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: ./apps/web/Dockerfile.ci
+          target: production
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/wallethub-web:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/wallethub-web:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            NODE_VERSION=22
+            PLAYWRIGHT_VERSION=1.48.2
+
+      - name: Skip publish (Docker Hub secrets not configured)
+        if: steps.dockerhub.outputs.ready != 'true'
+        run: echo "DOCKERHUB_USERNAME/DOCKERHUB_TOKEN not set — skipping image publish."

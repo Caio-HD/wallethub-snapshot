@@ -1,0 +1,31 @@
+{
+  "title": "Transaktionen",
+  "table": {
+    "date": "Datum",
+    "description": "Beschreibung",
+    "category": "Kategorie",
+    "amount": "Betrag",
+    "status": "Status"
+  },
+  "status": {
+    "pending": "Ausstehend",
+    "completed": "Abgeschlossen",
+    "failed": "Fehlgeschlagen"
+  },
+  "actions": {
+    "add": "Neue Transaktion",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "filter": "Filtern"
+  },
+  "empty": "Keine Transaktionen gefunden.",
+  "form": {
+    "transfer": "Überweisung",
+    "fromAccountLabel": "Von (Quellkonto)",
+    "toAccountLabel": "An (Zielkonto)",
+    "validation": {
+      "toAccountRequired": "Zielkonto ist erforderlich",
+      "toAccountSame": "Quelle und Ziel müssen unterschiedlich sein"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "toast": {
+    "dashboardRecalculoSuccess": "Dashboard-Neuberechnung erfolgreich angefordert.",
+    "dashboardRecalculoError": "Konnte Dashboard-Neuberechnung nicht anfordern."
+  },
+  "navbar": {
+    "login": "Einloggen"
+  },
+  "footer": {
+    "copyright": "© {{year}} WalletHub · Selbstgehostete Finanzanwendung · Alle Rechte vorbehalten.",
+    "github": "GitHub",
+    "login": "Einloggen"
+  },
+  "language": {
+    "selectLabel": "Sprache",
+    "pt": "Portugiesisch",
+    "en": "Englisch",
+    "es": "Spanisch",
+    "fr": "Französisch",
+    "de": "Deutsch",
+    "it": "Italienisch",
+    "zh": "Chinesisch",
+    "ja": "Japanisch",
+    "ar": "Arabisch"
+  }
+}

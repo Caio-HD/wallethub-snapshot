@@ -1,0 +1,9 @@
+{
+  "genericError": "An unexpected error occurred.",
+  "notFound": "Resource not found.",
+  "unauthorized": "Unauthorized.",
+  "forbidden": "Access forbidden.",
+  "validationError": "Validation error.",
+  "duplicateEntry": "Duplicate entry.",
+  "operationFailed": "Operation failed."
+}
