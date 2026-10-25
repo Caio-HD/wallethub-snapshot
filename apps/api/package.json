@@ -54,7 +54,7 @@
     "helmet": "^7.1.0",
     "ioredis": "^5.8.2",
     "joi": "^17.13.0",
-    "jsonwebtoken": "^9.0.2",
+    "jsonwebtoken": "^9.0.3",
     "nestjs-i18n": "^10.8.4",
     "nestjs-pino": "^4.4.1",
     "openai": "^4.78.1",
