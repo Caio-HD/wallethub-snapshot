@@ -1,0 +1,49 @@
+{
+  "budget": {
+    "title": "Monatliches Budget",
+    "estimatedIncome": "Geschätztes durchschnittliches Einkommen",
+    "aggregatedLimit": "Aggregiertes Limit",
+    "difference": "Differenz (Einkommen − Limit)",
+    "expenses": "Ausgaben im Zeitraum",
+    "limitUsage": "{value}% des aggregierten Limits"
+  },
+  "buttons": {
+    "recalculando": "Neuberechnung läuft…",
+    "recalcular": "Dashboard neu berechnen",
+    "exportando": "Exportiert…",
+    "exportarCSV": "CSV exportieren"
+  },
+  "kpi": {
+    "balance": "Kontostand",
+    "totalIncome": "Einkünfte",
+    "totalExpense": "Ausgaben"
+  },
+  "filters": {
+    "allAccounts": "Alle Konten",
+    "byMonth": "Nach Monat",
+    "byRange": "Nach Zeitraum"
+  },
+  "trend": {
+    "up": "Steigend",
+    "down": "Fallend",
+    "flat": "Stabil"
+  },
+  "cards": {
+    "loading": "Wird geladen…",
+    "accountBalances": {
+      "title": "Saldo pro Konto",
+      "empty": "Keine Konten gefunden"
+    },
+    "topTransactions": {
+      "title": "Top-Transaktionen",
+      "empty": "Keine Transaktionen im Zeitraum",
+      "noDescription": "Keine Beschreibung"
+    },
+    "projection": {
+      "title": "Monatsprognose",
+      "income": "Prognostizierte Einnahmen",
+      "expense": "Prognostizierte Ausgaben",
+      "balance": "Prognostizierter Saldo"
+    }
+  }
+}

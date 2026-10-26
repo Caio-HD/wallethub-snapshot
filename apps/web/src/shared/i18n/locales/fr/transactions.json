@@ -1,0 +1,31 @@
+{
+  "title": "Transactions",
+  "table": {
+    "date": "Date",
+    "description": "Description",
+    "category": "Catégorie",
+    "amount": "Montant",
+    "status": "Statut"
+  },
+  "status": {
+    "pending": "En attente",
+    "completed": "Terminée",
+    "failed": "Échouée"
+  },
+  "actions": {
+    "add": "Nouvelle Transaction",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "filter": "Filtrer"
+  },
+  "empty": "Aucune transaction trouvée.",
+  "form": {
+    "transfer": "Virement",
+    "fromAccountLabel": "De (compte source)",
+    "toAccountLabel": "Vers (compte destination)",
+    "validation": {
+      "toAccountRequired": "Le compte de destination est requis",
+      "toAccountSame": "La source et la destination doivent différer"
+    }
+  }
+}

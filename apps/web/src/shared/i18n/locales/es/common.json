@@ -1,0 +1,26 @@
+{
+  "toast": {
+    "dashboardRecalculoSuccess": "Recálculo del panel solicitado correctamente.",
+    "dashboardRecalculoError": "No se pudo solicitar el recálculo del panel."
+  },
+  "navbar": {
+    "login": "Iniciar sesión"
+  },
+  "footer": {
+    "copyright": "© {{year}} WalletHub · Aplicación financiera autoalojada · Todos los derechos reservados.",
+    "github": "GitHub",
+    "login": "Iniciar sesión"
+  },
+  "language": {
+    "selectLabel": "Idioma",
+    "pt": "Portugués",
+    "en": "Inglés",
+    "es": "Español",
+    "fr": "Francés",
+    "de": "Alemán",
+    "it": "Italiano",
+    "zh": "Chino",
+    "ja": "Japonés",
+    "ar": "Árabe"
+  }
+}

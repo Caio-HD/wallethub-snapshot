@@ -1,0 +1,62 @@
+x-default-env: &default-env
+  POSTGRES_DB: ${POSTGRES_DB:-wallethub}
+  POSTGRES_USER: ${POSTGRES_USER:-wallethub}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-wallethub}
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg15
+    container_name: wallethub_postgres
+    restart: unless-stopped
+    environment:
+      <<: *default-env
+      PGDATA: /var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
+      - ./backups/postgres:/var/backups
+    ports:
+      - "55432:5432"
+    networks:
+      - wallethub_local
+
+  redis:
+    image: redis:7-alpine
+    container_name: wallethub_redis
+    restart: unless-stopped
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - ./volumes/redis:/data
+    ports:
+      - "56379:6379"
+    networks:
+      - wallethub_local
+
+  adminer:
+    image: adminer:4
+    container_name: wallethub_adminer
+    restart: unless-stopped
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./adminer/theme.css:/var/www/html/adminer.css:ro
+    networks:
+      - wallethub_local
+
+networks:
+  wallethub_local:
+    name: wallethub_local

@@ -1,0 +1,56 @@
+# Dockerfile para desenvolvimento do Frontend WalletHub
+# Suporta hot-reload com Vite dev server
+ARG NODE_VERSION=20
+ARG WEB_PORT=3000
+ARG API_INTERNAL_PORT=3001
+
+FROM node:${NODE_VERSION}-bookworm AS base
+WORKDIR /app
+ENV NODE_ENV=development \
+    npm_config_loglevel=warn \
+    PORT=${WEB_PORT} \
+    WALLETHUB_API_INTERNAL_PORT=${API_INTERNAL_PORT}
+
+# Instala dependências (layout do monorepo para resolver @wallethub/config)
+COPY package-lock.json ./
+COPY package.json ./
+COPY packages/config ./packages/config
+COPY apps/api/package.json ./apps/api/
+COPY apps/web/package.json ./apps/web/package.json
+# Usa npm install para garantir que dependências opcionais (como @rollup/rollup-linux-x64-gnu) sejam instaladas
+# npm ci tem um bug conhecido com dependências opcionais (https://github.com/npm/cli/issues/4828)
+# Instala gensync na raiz do workspace (necessário para @babel/core)
+RUN npm install --workspace=apps/web && \
+    npm install gensync --save-dev --no-save || true && \
+    cd apps/web && \
+    npm install @rollup/rollup-linux-x64-gnu --save-optional || true && \
+    npx playwright install --with-deps || true
+WORKDIR /app/apps/web
+
+# Copia arquivos de configuração do app web
+# Agora estamos em /app/apps/web, então copiamos os arquivos diretamente
+COPY apps/web/vite.config.ts ./vite.config.ts
+COPY apps/web/tsconfig.json ./tsconfig.json
+COPY apps/web/tsconfig.node.json ./tsconfig.node.json
+COPY apps/web/tailwind.config.cjs ./tailwind.config.cjs
+COPY apps/web/postcss.config.cjs ./postcss.config.cjs
+COPY apps/web/index.html ./index.html
+
+# Expõe porta do Vite dev server
+EXPOSE ${WEB_PORT}
+
+# Comando padrão: iniciar Vite dev server
+# O código fonte será montado como volume
+# --host 0.0.0.0 permite conexões de fora do container
+# A porta será lida da variável PORT (definida no ENV acima)
+# Usa $PORT (sem $$) porque o shell vai expandir a variável de ambiente
+# Instala dependências opcionais do rollup e gensync antes de iniciar (necessário porque volume nomeado sobrescreve node_modules)
+# O gensync precisa estar na raiz do workspace (onde está no package.json) para @babel/core funcionar
+# Usa um script que garante a instalação antes de iniciar o vite
+CMD sh -c "cd /app && npm install gensync@^1.0.0-beta.2 --save-dev --no-save --workspace-root 2>&1 || true && cd apps/web && npm install @rollup/rollup-linux-x64-gnu --save-optional --no-save 2>&1 || true && npm run dev -- --host 0.0.0.0 --port $PORT"
+
+# Healthcheck simples: verifica se o servidor Vite responde
+# Usa variável PORT do ambiente (definida no ENV acima)
+HEALTHCHECK --interval=10s --timeout=5s --retries=3 --start-period=30s \
+  CMD node -e "require('http').get('http://localhost:' + (process.env.PORT || '3000'), (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})" || exit 1
+

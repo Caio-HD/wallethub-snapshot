@@ -1,0 +1,15 @@
+{
+  "otp": {
+    "subject": "Il tuo codice di verifica WalletHub",
+    "preview": "Usa questo codice per accedere in sicurezza.",
+    "heading": "Verifica la tua e-mail",
+    "body": "Usa il codice qui sotto per completare l'accesso a WalletHub.",
+    "codeLabel": "Il tuo codice",
+    "expires": "Scade tra {{ttl}}.",
+    "security": "Se non hai richiesto questo codice, ignora questa e-mail. Non condividere mai il tuo codice.",
+    "footer": "WalletHub · le tue finanze personali",
+    "smsBody": "WalletHub: il tuo codice è {{otp}} (scade tra {{ttl}}).",
+    "whatsappHeading": "Verifica il tuo numero",
+    "whatsappBody": "Usa il codice qui sotto per completare l'accesso a WalletHub."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "header": {
+    "title": "Como funciona",
+    "description": "Comece em minutos, sem configuração complexa."
+  },
+  "steps": [
+    {
+      "number": "01",
+      "title": "Crie sua conta",
+      "description": "Faça login, configure sua organização e defina os papéis dos membros da sua equipe."
+    },
+    {
+      "number": "02",
+      "title": "Conecte contas e categorias",
+      "description": "Adicione suas contas bancárias, defina categorias de receita e despesa, e importe extratos CSV."
+    },
+    {
+      "number": "03",
+      "title": "Acompanhe e evolua",
+      "description": "Use dashboards em tempo real, projeções automáticas e IA para tomar decisões financeiras melhores."
+    }
+  ]
+}

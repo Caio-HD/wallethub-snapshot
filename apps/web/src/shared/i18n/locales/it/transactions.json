@@ -1,0 +1,31 @@
+{
+  "title": "Transazioni",
+  "table": {
+    "date": "Data",
+    "description": "Descrizione",
+    "category": "Categoria",
+    "amount": "Importo",
+    "status": "Stato"
+  },
+  "status": {
+    "pending": "In sospeso",
+    "completed": "Completata",
+    "failed": "Fallita"
+  },
+  "actions": {
+    "add": "Nuova Transazione",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "filter": "Filtra"
+  },
+  "empty": "Nessuna transazione trovata.",
+  "form": {
+    "transfer": "Trasferimento",
+    "fromAccountLabel": "Da (conto origine)",
+    "toAccountLabel": "A (conto destinazione)",
+    "validation": {
+      "toAccountRequired": "Il conto di destinazione è obbligatorio",
+      "toAccountSame": "Origine e destinazione devono essere diversi"
+    }
+  }
+}

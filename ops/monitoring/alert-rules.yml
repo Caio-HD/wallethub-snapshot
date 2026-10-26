@@ -1,0 +1,48 @@
+groups:
+  - name: wallethub-health
+    interval: 1m
+    rules:
+      - alert: ApiDown
+        expr: up{job="wallethub-api"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: API indisponível
+          description: O serviço principal da WalletHub não responde há mais de 2 minutos.
+
+      - alert: QueueBacklog
+        expr: bullmq_queue_waiting{queue="whatsapp-inbound"} > 20
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Fila whatsapp-inbound acima do limite
+          description: Verifique o worker de WhatsApp. Há mais de 20 mensagens aguardando processamento.
+
+      - alert: TelegramQueueBacklog
+        expr: bullmq_queue_waiting{queue="telegram-inbound"} > 20
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Fila telegram-inbound acima do limite
+          description: Verifique o worker Telegram. Há mais de 20 mensagens aguardando processamento.
+
+      - alert: BackupStale
+        expr: (time() - wallethub_backup_last_success_seconds) > 86400
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: Backup não gerado nas últimas 24h
+          description: Nenhum backup completo foi detectado nas últimas 24 horas. Verifique o cron e o storage remoto. A métrica é atualizada via endpoint /backup/success após backup bem-sucedido.
+
+      - alert: WebhookErrors
+        expr: increase(wallethub_webhook_failures_total[15m]) > 5
+        labels:
+          severity: warning
+        annotations:
+          summary: Erros consecutivos no webhook do WhatsApp
+          description: Foram detectados mais de 5 erros HTTP ao processar webhooks do WhatsApp nos últimos 15 minutos.
+

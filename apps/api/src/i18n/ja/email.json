@@ -1,0 +1,15 @@
+{
+  "otp": {
+    "subject": "WalletHub の確認コード",
+    "preview": "このコードで安全にサインインしてください。",
+    "heading": "メールアドレスを確認",
+    "body": "以下のコードを使用して WalletHub へのサインインを完了してください。",
+    "codeLabel": "確認コード",
+    "expires": "{{ttl}}で有効期限が切れます。",
+    "security": "このコードに心当たりがない場合は、このメールを無視してください。コードは絶対に共有しないでください。",
+    "footer": "WalletHub · あなたの家計管理",
+    "smsBody": "WalletHub：確認コードは {{otp}} です（{{ttl}}で失効）。",
+    "whatsappHeading": "電話番号を確認",
+    "whatsappBody": "以下のコードを使用して WalletHub へのサインインを完了してください。"
+  }
+}

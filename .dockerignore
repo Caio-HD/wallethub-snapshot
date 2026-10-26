@@ -1,0 +1,14 @@
+node_modules
+**/node_modules
+**/dist
+**/test-results
+.git
+.github
+.wallethub
+ops/dev/artifacts
+ops/ci/artifacts
+ops/dev/volumes
+*.log
+class-validator-*.tgz
+
+

@@ -1,0 +1,26 @@
+{
+  "toast": {
+    "dashboardRecalculoSuccess": "Recalcul du tableau de bord demandé avec succès.",
+    "dashboardRecalculoError": "Impossible de demander le recalcul du tableau de bord."
+  },
+  "navbar": {
+    "login": "Se connecter"
+  },
+  "footer": {
+    "copyright": "© {{year}} WalletHub · Application financière auto-hébergée · Tous droits réservés.",
+    "github": "GitHub",
+    "login": "Se connecter"
+  },
+  "language": {
+    "selectLabel": "Langue",
+    "pt": "Portugais",
+    "en": "Anglais",
+    "es": "Espagnol",
+    "fr": "Français",
+    "de": "Allemand",
+    "it": "Italien",
+    "zh": "Chinois",
+    "ja": "Japonais",
+    "ar": "Arabe"
+  }
+}

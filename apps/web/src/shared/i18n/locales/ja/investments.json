@@ -1,0 +1,16 @@
+{
+  "terminal": {
+    "moduleOverview": "WALLET_HUB::INVEST_MODULE_OVR",
+    "dashboardTitle": "PORTFOLIO_DASHBOARD_v3",
+    "terminalVersion": "PRO_TERMINAL_2026",
+    "equityTotal": "Equity_Total ({baseCurrency})",
+    "netProfitLabel": "(純利益)",
+    "activePositions": "アクティブポジションストリーム",
+    "systemLogs": "システムログ",
+    "recalculatingAlphaBeta": "[10:44:00] - アルファベータ再計算中... OK",
+    "syncingExternalBenchmark": "[10:44:01] - 外部ベンチマークと同期中... OK",
+    "coreMetricsUpdate": "[10:44:02] - コアメトリクス更新: TWR={(metrics?.twr || 0).toFixed(4)}",
+    "systemReady": "> _ システム準備完了_V3_アクティブ",
+    "alphaBetaMetricsDescription": "アルファとベータの指標は、標準ベンチマーク（Ibovespa/S&P500）に対して、過去6ヶ月の歴史データに基づいて計算されます。"
+  }
+}

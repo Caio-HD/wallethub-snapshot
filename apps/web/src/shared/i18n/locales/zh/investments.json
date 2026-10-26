@@ -1,0 +1,16 @@
+{
+  "terminal": {
+    "moduleOverview": "WALLET_HUB::INVEST_MODULE_OVR",
+    "dashboardTitle": "PORTFOLIO_DASHBOARD_v3",
+    "terminalVersion": "PRO_TERMINAL_2026",
+    "equityTotal": "Equity_Total ({baseCurrency})",
+    "netProfitLabel": "(净利润)",
+    "activePositions": "活跃持仓流",
+    "systemLogs": "系统日志",
+    "recalculatingAlphaBeta": "[10:44:00] - 重新计算阿尔法贝塔... OK",
+    "syncingExternalBenchmark": "[10:44:01] - 同步外部基准... OK",
+    "coreMetricsUpdate": "[10:44:02] - 核心指标更新: TWR={(metrics?.twr || 0).toFixed(4)}",
+    "systemReady": "> _ 系统就绪_V3_活跃",
+    "alphaBetaMetricsDescription": "阿尔法和贝塔指标相对于标准基准（Ibovespa/S&P500）计算，基于6个月的历史数据。"
+  }
+}

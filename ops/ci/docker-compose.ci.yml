@@ -1,0 +1,114 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg15
+    environment:
+      POSTGRES_DB: wallethub
+      POSTGRES_USER: wallethub
+      POSTGRES_PASSWORD: wallethub
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wallethub"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    tmpfs:
+      - /var/lib/postgresql/data
+    # Permite Jest e2e / ferramentas no host (ex.: após `wallethub dev up`)
+    ports:
+      - "127.0.0.1:55432:5432"
+    networks:
+      - ci
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    tmpfs:
+      - /data
+    ports:
+      - "127.0.0.1:56379:6379"
+    networks:
+      - ci
+
+  api-ci:
+    build:
+      context: ../..
+      dockerfile: apps/api/Dockerfile.ci
+      target: test
+      args:
+        NODE_VERSION: 22
+    environment:
+      NODE_ENV: test
+      DATABASE_URL: postgres://wallethub:wallethub@postgres:5432/wallethub
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_USER: wallethub
+      DB_PASSWORD: wallethub
+      DB_NAME: wallethub
+      TYPEORM_LOGGING: "false"
+      REDIS_URL: redis://redis:6379
+      META_APP_SECRET: dummy
+      WHATSAPP_PHONE_ID: dummy
+      WHATSAPP_ACCESS_TOKEN: dummy
+      WHATSAPP_VERIFY_TOKEN: dummy
+      JWT_PRIVATE_KEY: dummy
+      JWT_PUBLIC_KEY: dummy
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    working_dir: /app/apps/api
+    networks:
+      - ci
+    volumes:
+      - ./artifacts/api:/artifacts
+
+  web-ci:
+    build:
+      context: ../..
+      dockerfile: apps/web/Dockerfile.ci
+      target: test
+      args:
+        NODE_VERSION: 22
+        PLAYWRIGHT_VERSION: 1.48.2
+    environment:
+      NODE_ENV: test
+      VITE_API_URL: http://localhost:5173/__api
+    working_dir: /app/apps/web
+    networks:
+      - ci
+    volumes:
+      - ./artifacts/web:/artifacts
+
+  api-release:
+    build:
+      context: ../..
+      dockerfile: apps/api/Dockerfile.ci
+      target: release
+      args:
+        NODE_VERSION: 22
+    image: wallethub/api:ci
+    networks:
+      - ci
+    profiles: ["release"]
+
+  web-release:
+    build:
+      context: ../..
+      dockerfile: apps/web/Dockerfile.ci
+      target: production
+      args:
+        NODE_VERSION: 22
+        PLAYWRIGHT_VERSION: 1.48.2
+    image: wallethub/web:ci
+    networks:
+      - ci
+    profiles: ["release"]
+
+networks:
+  ci:
+    name: wallethub_ci

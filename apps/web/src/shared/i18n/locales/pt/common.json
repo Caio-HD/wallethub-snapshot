@@ -1,0 +1,51 @@
+{
+  "toast": {
+    "dashboardRecalculoSuccess": "Recalculo da dashboard solicitado com sucesso.",
+    "dashboardRecalculoError": "Não foi possível solicitar o recálculo da dashboard."
+  },
+  "navbar": {
+    "login": "Entrar"
+  },
+  "footer": {
+    "copyright": "© {{year}} WalletHub · Aplicação financeira auto-hospedável · Todos os direitos reservados.",
+    "github": "GitHub",
+    "login": "Login"
+  },
+  "language": {
+    "selectLabel": "Idioma",
+    "pt": "Português",
+    "en": "Inglês",
+    "es": "Espanhol",
+    "fr": "Francês",
+    "de": "Alemão",
+    "it": "Italiano",
+    "zh": "Chinês",
+    "ja": "Japonês",
+    "ar": "Árabe"
+  },
+  "categories": {
+    "title": "Categorias",
+    "subtitle": "Gerencie suas categorias de transações.",
+    "addCategory": "Nova Categoria",
+    "namePlaceholder": "Nome da categoria",
+    "income": "Receita",
+    "expense": "Despesa",
+    "confirmDeactivate": "Tem certeza que deseja desativar esta categoria?",
+    "namePlaceholderExample": "Ex: Supermercado",
+    "typeLabel": "Tipo",
+    "nameLabel": "Nome",
+    "create": "Criar",
+    "empty": "Nenhuma categoria ativa encontrada.",
+    "clickToStart": "Clique aqui para começar",
+    "toasts": {
+      "createSuccess": "Categoria criada com sucesso",
+      "createError": "Erro ao criar categoria",
+      "createDuplicate": "Este nome já está a ser utilizado",
+      "updateSuccess": "Categoria atualizada",
+      "updateError": "Erro ao atualizar categoria",
+      "deactivateSuccess": "Categoria desativada",
+      "deactivateError": "Erro ao desativar categoria",
+      "reorderError": "Erro ao reordenar"
+    }
+  }
+}

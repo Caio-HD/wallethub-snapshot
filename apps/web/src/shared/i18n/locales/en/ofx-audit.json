@@ -1,0 +1,83 @@
+{
+  "title": "OFX Import Audit",
+  "subtitle": "Import, audit and manage statements for this account.",
+  "subtitleAll": "All accounts",
+  "back": "Back to Accounts",
+  "tabs": {
+    "import": "Import",
+    "batches": "Imports",
+    "categorize": "Categorize",
+    "config": "Configuration"
+  },
+  "common": {
+    "loading": "Loading…"
+  },
+  "categorize": {
+    "hint": "Bulk-classify the transactions that landed as \"Uncategorized\", grouped by description. Categorizing here teaches the system to auto-classify future imports from the same merchant.",
+    "empty": "Nothing pending categorization.",
+    "count_one": "{{count}} entry",
+    "count_other": "{{count}} entries",
+    "income": "income",
+    "expense": "expense",
+    "selectCategory": "Select category",
+    "apply": "Apply",
+    "noCategoryOfType": "Create a category of this type first",
+    "applied_one": "{{count}} transaction categorized",
+    "applied_other": "{{count}} transactions categorized",
+    "skipped_one": "{{count}} transaction skipped",
+    "skipped_other": "{{count}} transactions skipped",
+    "skippedHint": "Skipped because they are linked to a debt.",
+    "error": "Failed to categorize."
+  },
+  "import": {
+    "hint": "Import a new CSV/OFX statement or reprocess a file using the preview (dry run) before committing.",
+    "noCategories": "Create at least one category to import statements."
+  },
+  "batches": {
+    "empty": "No imports recorded for this account.",
+    "view": "View",
+    "delete": "Delete import",
+    "count_one": "{{count}} transaction",
+    "count_other": "{{count}} transactions",
+    "liveOfTotal": "{{live}} of {{total}}",
+    "noBank": "Bank not detected",
+    "noDescription": "(no description)",
+    "emptyDetail": "No active transactions in this import."
+  },
+  "config": {
+    "bankTitle": "Bank ↔ account link",
+    "bankHint": "Bank, branch and account let OFX imports auto-match this account.",
+    "bank": "Bank",
+    "bankPlaceholder": "Search bank by name or code…",
+    "branch": "Branch",
+    "account": "Account",
+    "save": "Save",
+    "mappingsTitle": "Category mappings",
+    "mappingsHint": "Known descriptions are auto-categorized in future imports.",
+    "description": "Description",
+    "descriptionPlaceholder": "e.g. PIX MARKET",
+    "category": "Category",
+    "selectCategory": "Select category…",
+    "add": "Add",
+    "mappingsEmpty": "No mappings registered.",
+    "removeMapping": "Remove mapping"
+  },
+  "delete": {
+    "title": "Delete import?",
+    "body": "This removes the import \"{{filename}}\" and all transactions linked to it. This action cannot be undone.",
+    "cancel": "Cancel",
+    "confirm": "Delete import"
+  },
+  "toasts": {
+    "bankSaved": "Bank link updated",
+    "bankError": "Error saving bank link",
+    "deleted_one": "{{count}} transaction deleted",
+    "deleted_other": "{{count}} transactions deleted",
+    "deleteError": "Error deleting import",
+    "skipped_one": "{{count}} transaction kept (linked to a debt)",
+    "skipped_other": "{{count}} transactions kept (linked to debts)",
+    "skippedHint": "Transactions linked to a debt are not deleted. Unlink them via the debt first.",
+    "mappingAdded": "Mapping added",
+    "mappingError": "Error adding mapping"
+  }
+}

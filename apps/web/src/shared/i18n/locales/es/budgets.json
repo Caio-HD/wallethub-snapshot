@@ -1,0 +1,18 @@
+{
+  "title": "Presupuesto",
+  "limit": "Límite",
+  "income": "Ingresos",
+  "expenses": "Gastos",
+  "remaining": "Restante",
+  "overLimit": "Sobre el límite",
+  "category": "Categoría",
+  "noCategories": "Ninguna categoría definida",
+  "addCategory": "Añadir Categoría",
+  "editCategory": "Editar Categoría",
+  "deleteCategory": "Eliminar Categoría",
+  "setLimit": "Establecer Límite",
+  "setIncome": "Establecer Ingresos",
+  "percentageUsed": "{value}% del límite usado",
+  "warning": "Advertencia: está por encima del límite",
+  "info": "Su límite mensual es {limit} y ha gastado {expenses}"
+}

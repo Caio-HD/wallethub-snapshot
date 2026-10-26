@@ -1,0 +1,74 @@
+{
+  "budget": {
+    "title": "Orçamento mensal",
+    "estimatedIncome": "Receita média estimada",
+    "aggregatedLimit": "Limite agregado",
+    "difference": "Diferença (receita − limite)",
+    "expenses": "Despesas no período",
+    "limitUsage": "{value}% do limite agregado"
+  },
+  "buttons": {
+    "recalculando": "Recalculando…",
+    "recalcular": "Recalcular dashboard",
+    "exportando": "Exportando…",
+    "exportarCSV": "Exportar CSV"
+  },
+  "kpi": {
+    "balance": "Saldo",
+    "totalIncome": "Receitas",
+    "totalExpense": "Despesas",
+    "stable": "Estável"
+  },
+  "filters": {
+    "allAccounts": "Todas as contas",
+    "byMonth": "Por mês",
+    "byRange": "Por intervalo"
+  },
+  "trend": {
+    "up": "Em alta",
+    "down": "Em queda",
+    "flat": "Estável"
+  },
+  "cards": {
+    "loading": "Carregando…",
+    "accountBalances": {
+      "title": "Saldo por conta",
+      "empty": "Nenhuma conta encontrada"
+    },
+    "topTransactions": {
+      "title": "Top transações",
+      "empty": "Nenhuma transação no período",
+      "noDescription": "Sem descrição"
+    },
+    "projection": {
+      "title": "Projeção do mês",
+      "income": "Receita projetada",
+      "expense": "Despesa projetada",
+      "balance": "Saldo projetado"
+    }
+  },
+  "period": {
+    "select": "Selecionar",
+    "current": "Atual",
+    "currentShort": "A",
+    "prevYear": "Ano anterior",
+    "nextYear": "Ano seguinte",
+    "rangeShortcuts": "Atalhos de intervalo de meses",
+    "shortcuts": {
+      "minus6Multi": "Selecionar os seis meses consecutivos que terminam no mês de referência (inclui a âncora)",
+      "minus6Single": "Ir para o primeiro mês da janela de seis meses que termina no mês de referência",
+      "minus3Multi": "Selecionar os três meses consecutivos que terminam no mês de referência (inclui a âncora)",
+      "minus3Single": "Ir para o primeiro mês da janela de três meses que termina no mês de referência",
+      "minus1Multi": "Selecionar apenas o mês imediatamente anterior ao mês de referência",
+      "minus1Single": "Ir para o mês imediatamente anterior ao mês de referência",
+      "currentMulti": "Selecionar apenas o mês civil corrente (hoje)",
+      "currentSingle": "Ir para o mês civil corrente (hoje)",
+      "plus1Multi": "Selecionar apenas o mês imediatamente a seguir ao mês de referência",
+      "plus1Single": "Ir para o mês imediatamente a seguir ao mês de referência",
+      "plus3Multi": "Selecionar três meses consecutivos a partir do mês de referência (inclui a âncora)",
+      "plus3Single": "Ir para o último mês da janela de três meses a partir do mês de referência",
+      "plus6Multi": "Selecionar seis meses consecutivos a partir do mês de referência (inclui a âncora)",
+      "plus6Single": "Ir para o último mês da janela de seis meses a partir do mês de referência"
+    }
+  }
+}

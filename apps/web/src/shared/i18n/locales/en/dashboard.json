@@ -1,0 +1,74 @@
+{
+  "budget": {
+    "title": "Monthly budget",
+    "estimatedIncome": "Estimated average income",
+    "aggregatedLimit": "Aggregated limit",
+    "difference": "Difference (income − limit)",
+    "expenses": "Expenses for the period",
+    "limitUsage": "{value}% of the aggregated limit"
+  },
+  "buttons": {
+    "recalculando": "Recalculating…",
+    "recalcular": "Recalculate dashboard",
+    "exportando": "Exporting…",
+    "exportarCSV": "Export CSV"
+  },
+  "kpi": {
+    "balance": "Balance",
+    "totalIncome": "Income",
+    "totalExpense": "Expenses",
+    "stable": "Stable"
+  },
+  "filters": {
+    "allAccounts": "All accounts",
+    "byMonth": "By month",
+    "byRange": "By range"
+  },
+  "trend": {
+    "up": "Trending up",
+    "down": "Trending down",
+    "flat": "Stable"
+  },
+  "cards": {
+    "loading": "Loading…",
+    "accountBalances": {
+      "title": "Balance per account",
+      "empty": "No accounts found"
+    },
+    "topTransactions": {
+      "title": "Top transactions",
+      "empty": "No transactions in the period",
+      "noDescription": "No description"
+    },
+    "projection": {
+      "title": "Monthly projection",
+      "income": "Projected income",
+      "expense": "Projected expense",
+      "balance": "Projected balance"
+    }
+  },
+  "period": {
+    "select": "Select",
+    "current": "Current",
+    "currentShort": "C",
+    "prevYear": "Previous year",
+    "nextYear": "Next year",
+    "rangeShortcuts": "Month range shortcuts",
+    "shortcuts": {
+      "minus6Multi": "Select the six consecutive months ending at the reference month (anchor included)",
+      "minus6Single": "Go to the first month of the six-month window ending at the reference month",
+      "minus3Multi": "Select the three consecutive months ending at the reference month (anchor included)",
+      "minus3Single": "Go to the first month of the three-month window ending at the reference month",
+      "minus1Multi": "Select only the month immediately before the reference month",
+      "minus1Single": "Go to the month immediately before the reference month",
+      "currentMulti": "Select only the current calendar month (today)",
+      "currentSingle": "Go to the current calendar month (today)",
+      "plus1Multi": "Select only the month immediately after the reference month",
+      "plus1Single": "Go to the month immediately after the reference month",
+      "plus3Multi": "Select three consecutive months starting from the reference month (anchor included)",
+      "plus3Single": "Go to the last month of the three-month window starting from the reference month",
+      "plus6Multi": "Select six consecutive months starting from the reference month (anchor included)",
+      "plus6Single": "Go to the last month of the six-month window starting from the reference month"
+    }
+  }
+}

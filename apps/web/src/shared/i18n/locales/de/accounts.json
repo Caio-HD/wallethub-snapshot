@@ -1,0 +1,19 @@
+{
+  "title": "Konten",
+  "subtitle": "Verwalten Sie Ihre Bankkonten",
+  "empty": "Keine Konten gefunden.",
+  "addAccount": "Konto hinzufügen",
+  "editAccount": "Konto bearbeiten",
+  "deleteAccount": "Konto löschen",
+  "accountName": "Kontoname",
+  "bankName": "Bankname",
+  "accountType": "Kontotyp",
+  "balance": "Kontostand",
+  "actions": "Aktionen",
+  "owners": "Besitzer",
+  "save": "Speichern",
+  "cancel": "Abbrechen",
+  "confirmDelete": "Sind Sie sicher, dass Sie dieses Konto löschen möchten?",
+  "deleteSuccess": "Konto erfolgreich gelöscht.",
+  "deleteError": "Fehler beim Löschen des Kontos."
+}

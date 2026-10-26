@@ -1,0 +1,10 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="WalletHub">
+  <defs>
+    <linearGradient id="wh-grad" x1="126" y1="350" x2="396" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2F6BFF"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <path d="M126 176 L186 350 L256 236 L322 350 L392 158" stroke="url(#wh-grad)" stroke-width="44" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M344 166 L392 158 L400 206" stroke="#22D3EE" stroke-width="44" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

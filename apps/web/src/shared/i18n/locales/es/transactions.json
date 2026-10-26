@@ -1,0 +1,31 @@
+{
+  "title": "Transacciones",
+  "table": {
+    "date": "Fecha",
+    "description": "Descripción",
+    "category": "Categoría",
+    "amount": "Monto",
+    "status": "Estado"
+  },
+  "status": {
+    "pending": "Pendiente",
+    "completed": "Completada",
+    "failed": "Falló"
+  },
+  "actions": {
+    "add": "Nueva Transacción",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "filter": "Filtrar"
+  },
+  "empty": "No se encontraron transacciones.",
+  "form": {
+    "transfer": "Transferencia",
+    "fromAccountLabel": "De (cuenta origen)",
+    "toAccountLabel": "A (cuenta destino)",
+    "validation": {
+      "toAccountRequired": "La cuenta de destino es obligatoria",
+      "toAccountSame": "El origen y el destino deben ser distintos"
+    }
+  }
+}

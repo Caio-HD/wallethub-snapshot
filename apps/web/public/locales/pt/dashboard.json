@@ -1,0 +1,21 @@
+﻿{
+  "budget": {
+    "title": "Orçamento mensal",
+    "estimatedIncome": "Receita média estimada",
+    "aggregatedLimit": "Limite agregado",
+    "difference": "Diferença (receita − limite)",
+    "expenses": "Despesas no período",
+    "limitUsage": "{value}% do limite agregado"
+  },
+  "buttons": {
+    "recalculando": "Recalculando…",
+    "recalcular": "Recalcular dashboard",
+    "exportando": "Exportando…",
+    "exportarCSV": "Exportar CSV"
+  },
+  "kpi": {
+    "balance": "Saldo",
+    "totalIncome": "Receitas",
+    "totalExpense": "Despesas"
+  }
+}

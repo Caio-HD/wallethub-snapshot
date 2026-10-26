@@ -1,0 +1,26 @@
+{
+  "toast": {
+    "dashboardRecalculoSuccess": "仪表板重新计算请求成功。",
+    "dashboardRecalculoError": "无法请求仪表板重新计算。"
+  },
+  "navbar": {
+    "login": "登录"
+  },
+  "footer": {
+    "copyright": "© {{year}} WalletHub · 自托管金融应用 · 版权所有。",
+    "github": "GitHub",
+    "login": "登录"
+  },
+  "language": {
+    "selectLabel": "语言",
+    "pt": "葡萄牙语",
+    "en": "英语",
+    "es": "西班牙语",
+    "fr": "法语",
+    "de": "德语",
+    "it": "意大利语",
+    "zh": "中文",
+    "ja": "日语",
+    "ar": "阿拉伯语"
+  }
+}

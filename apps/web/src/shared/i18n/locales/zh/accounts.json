@@ -1,0 +1,19 @@
+{
+  "title": "账户",
+  "subtitle": "管理您的银行账户",
+  "empty": "未找到账户。",
+  "addAccount": "添加账户",
+  "editAccount": "编辑账户",
+  "deleteAccount": "删除账户",
+  "accountName": "账户名称",
+  "bankName": "银行名称",
+  "accountType": "账户类型",
+  "balance": "余额",
+  "actions": "操作",
+  "owners": "所有者",
+  "save": "保存",
+  "cancel": "取消",
+  "confirmDelete": "您确定要删除此账户吗？",
+  "deleteSuccess": "账户删除成功。",
+  "deleteError": "删除账户时出错。"
+}

@@ -1,0 +1,34 @@
+{
+  "features": {
+    "list": [
+      {
+        "title": "Dashboard em Tempo Real",
+        "description": "KPIs, gráficos de fluxo de caixa e projeções mensais automáticas. Veja a saúde financeira da organização em um único painel."
+      },
+      {
+        "title": "Controle de Transações",
+        "description": "Categorias personalizadas, filtros avançados, auditoria completa e importação de extratos CSV — via web ou WhatsApp."
+      },
+      {
+        "title": "Multi-conta & Multi-org",
+        "description": "Cada utilizador pode pertencer a várias organizações com dados financeiros completamente isolados e papéis granulares."
+      },
+      {
+        "title": "WhatsApp Integrado",
+        "description": "Registre transações, consulte saldos e importe extratos diretamente pelo WhatsApp. Integração bidirecional via Baileys."
+      },
+      {
+        "title": "Portfólio de Investimentos",
+        "description": "Acompanhe seus ativos, visualize a alocação com gráficos Sunburst e analise a performance do portfólio."
+      },
+      {
+        "title": "IA Assistente Financeira",
+        "description": "Chat com IA com RAG por organização. Faça perguntas sobre suas finanças e obtenha insights personalizados."
+      }
+    ]
+  },
+  "header": {
+    "title": "Tudo que você precisa",
+    "description": "Uma plataforma completa para gestão financeira pessoal e corporativa."
+  }
+}

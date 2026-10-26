@@ -1,0 +1,49 @@
+{
+  "budget": {
+    "title": "月次予算",
+    "estimatedIncome": "予測平均収入",
+    "aggregatedLimit": "合計限度額",
+    "difference": "差額（収入 − 限度額）",
+    "expenses": "期間中の費用",
+    "limitUsage": "{value}% の合計限度額"
+  },
+  "buttons": {
+    "recalculando": "再計算中…",
+    "recalcular": "ダッシュボードを再計算",
+    "exportando": "エクスポート中…",
+    "exportarCSV": "CSV をエクスポート"
+  },
+  "kpi": {
+    "balance": "残高",
+    "totalIncome": "収入",
+    "totalExpense": "支出"
+  },
+  "filters": {
+    "allAccounts": "すべての口座",
+    "byMonth": "月単位",
+    "byRange": "期間指定"
+  },
+  "trend": {
+    "up": "上昇傾向",
+    "down": "下降傾向",
+    "flat": "横ばい"
+  },
+  "cards": {
+    "loading": "読み込み中…",
+    "accountBalances": {
+      "title": "口座別残高",
+      "empty": "口座が見つかりません"
+    },
+    "topTransactions": {
+      "title": "主な取引",
+      "empty": "期間内に取引がありません",
+      "noDescription": "説明なし"
+    },
+    "projection": {
+      "title": "月次予測",
+      "income": "予測収入",
+      "expense": "予測支出",
+      "balance": "予測残高"
+    }
+  }
+}

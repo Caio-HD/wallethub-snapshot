@@ -1,0 +1,41 @@
+# Dockerfile para desenvolvimento da API WalletHub
+# Suporta hot-reload com volumes montados
+ARG NODE_VERSION=20
+ARG API_PORT=3001
+
+FROM node:${NODE_VERSION}-bookworm AS base
+WORKDIR /app
+ENV NODE_ENV=development \
+    npm_config_loglevel=warn \
+    PORT=${API_PORT}
+
+# Stage de dependências: layout do monorepo para resolver @wallethub/config
+FROM base AS deps
+COPY package.json package-lock.json ./
+COPY packages/config ./packages/config
+COPY apps/api/package.json ./apps/api/
+COPY apps/web/package.json ./apps/web/
+RUN npm install
+
+# Stage de desenvolvimento
+FROM base AS dev
+# Copia node_modules da stage deps (raiz + workspace api, para resolver class-transformer etc.)
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/apps/api/node_modules ./api_node_modules
+# Copia arquivos de configuração
+COPY apps/api/nest-cli.json ./
+COPY apps/api/tsconfig.json ./
+COPY apps/api/tsconfig.build.json ./
+COPY apps/api/package.json ./
+
+# Expõe porta da API
+EXPOSE ${API_PORT}
+
+# Comando padrão: NODE_PATH com raiz + workspace API; instalar deps; verificar runtime deps; iniciar API
+CMD ["sh", "-c", "export NODE_PATH=/app/node_modules:/app/apps/api/node_modules && cd /app && npm install && node apps/api/scripts/check-runtime-deps.js && cd apps/api && npm run start:dev"]
+
+# Healthcheck: verifica endpoint /api/health (com prefixo global)
+# Usa variável PORT do ambiente (definida no ENV acima)
+HEALTHCHECK --interval=10s --timeout=5s --retries=3 --start-period=40s \
+  CMD node -e "require('http').get('http://localhost:' + (process.env.PORT || '3001') + '/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})" || exit 1
+

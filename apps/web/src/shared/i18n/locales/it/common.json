@@ -1,0 +1,26 @@
+{
+  "toast": {
+    "dashboardRecalculoSuccess": "Recupero della dashboard richiesto con successo.",
+    "dashboardRecalculoError": "Impossibile richiedere il recupero della dashboard."
+  },
+  "navbar": {
+    "login": "Accedi"
+  },
+  "footer": {
+    "copyright": "© {{year}} WalletHub · Applicazione finanziaria auto-ospitata · Tutti i diritti riservati.",
+    "github": "GitHub",
+    "login": "Accedi"
+  },
+  "language": {
+    "selectLabel": "Lingua",
+    "pt": "Portoghese",
+    "en": "Inglese",
+    "es": "Spagnolo",
+    "fr": "Francese",
+    "de": "Tedesco",
+    "it": "Italiano",
+    "zh": "Cinese",
+    "ja": "Giapponese",
+    "ar": "Arabo"
+  }
+}

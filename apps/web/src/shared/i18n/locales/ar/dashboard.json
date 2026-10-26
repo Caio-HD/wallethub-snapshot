@@ -1,0 +1,49 @@
+{
+  "budget": {
+    "title": "الميزانية الشهرية",
+    "estimatedIncome": "الدخل المتوسط المقدر",
+    "aggregatedLimit": "الحد المجمع",
+    "difference": "الفرق (الإيرادات − الحد)",
+    "expenses": "المصروفات خلال الفترة",
+    "limitUsage": "{value}% من الحد المجمع"
+  },
+  "buttons": {
+    "recalculando": "إعادة الحساب جاري…",
+    "recalcular": "إعادة حساب لوحة المعلومات",
+    "exportando": "جارٍ التصدير…",
+    "exportarCSV": "تصدير كملف CSV"
+  },
+  "kpi": {
+    "balance": "الرصيد",
+    "totalIncome": "الإيرادات",
+    "totalExpense": "المصروفات"
+  },
+  "filters": {
+    "allAccounts": "جميع الحسابات",
+    "byMonth": "حسب الشهر",
+    "byRange": "حسب الفترة"
+  },
+  "trend": {
+    "up": "في ارتفاع",
+    "down": "في انخفاض",
+    "flat": "مستقر"
+  },
+  "cards": {
+    "loading": "جارٍ التحميل…",
+    "accountBalances": {
+      "title": "الرصيد لكل حساب",
+      "empty": "لم يتم العثور على حسابات"
+    },
+    "topTransactions": {
+      "title": "أهم المعاملات",
+      "empty": "لا توجد معاملات في الفترة",
+      "noDescription": "بدون وصف"
+    },
+    "projection": {
+      "title": "التوقع الشهري",
+      "income": "الدخل المتوقع",
+      "expense": "المصروفات المتوقعة",
+      "balance": "الرصيد المتوقع"
+    }
+  }
+}

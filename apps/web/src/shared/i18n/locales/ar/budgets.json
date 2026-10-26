@@ -1,0 +1,18 @@
+{
+  "title": "الميزانية",
+  "limit": "الحد",
+  "income": "الدخل",
+  "expenses": "المصروفات",
+  "remaining": "الباقي",
+  "overLimit": "فوق الحد",
+  "category": "الفئة",
+  "noCategories": "لم يتم تعريف فئات",
+  "addCategory": "إضافة فئة",
+  "editCategory": "تحرير فئة",
+  "deleteCategory": "حذف فئة",
+  "setLimit": "تعيين الحد",
+  "setIncome": "تعيين الدخل",
+  "percentageUsed": "{value}% من الحد المستخدم",
+  "warning": "تحذير: أنت فوق الحد",
+  "info": "حدك الشهري هو {limit} وقد أنفقت {expenses}"
+}

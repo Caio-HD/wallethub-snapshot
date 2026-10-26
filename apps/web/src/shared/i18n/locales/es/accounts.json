@@ -1,0 +1,19 @@
+{
+  "title": "Cuentas",
+  "subtitle": "Administre sus cuentas bancarias",
+  "empty": "No se encontraron cuentas.",
+  "addAccount": "Añadir Cuenta",
+  "editAccount": "Editar Cuenta",
+  "deleteAccount": "Eliminar Cuenta",
+  "accountName": "Nombre de la Cuenta",
+  "bankName": "Nombre del Banco",
+  "accountType": "Tipo de Cuenta",
+  "balance": "Saldo",
+  "actions": "Acciones",
+  "owners": "Propietarios",
+  "save": "Guardar",
+  "cancel": "Cancelar",
+  "confirmDelete": "¿Está seguro de que desea eliminar esta cuenta?",
+  "deleteSuccess": "Cuenta eliminada con éxito.",
+  "deleteError": "Error al eliminar la cuenta."
+}

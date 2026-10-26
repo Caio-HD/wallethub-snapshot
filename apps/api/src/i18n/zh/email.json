@@ -1,0 +1,15 @@
+{
+  "otp": {
+    "subject": "您的 WalletHub 验证码",
+    "preview": "使用此验证码安全登录。",
+    "heading": "验证您的邮箱",
+    "body": "请使用下方验证码完成 WalletHub 登录。",
+    "codeLabel": "您的验证码",
+    "expires": "{{ttl}}后过期。",
+    "security": "如果您未请求此验证码，请忽略此邮件。请勿向他人透露您的验证码。",
+    "footer": "WalletHub · 您的个人理财",
+    "smsBody": "WalletHub：您的验证码是 {{otp}}（{{ttl}}后过期）。",
+    "whatsappHeading": "验证您的号码",
+    "whatsappBody": "请使用下方验证码完成 WalletHub 登录。"
+  }
+}

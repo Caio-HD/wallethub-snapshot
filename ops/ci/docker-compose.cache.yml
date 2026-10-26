@@ -1,0 +1,36 @@
+# CI-only build cache (GitHub Actions registry cache, type=gha).
+#
+# Mantido FORA do docker-compose.ci.yml base de propósito: `type=gha` exige o backend
+# de cache do Actions (ACTIONS_CACHE_URL / token), ausente fora do runner — incluí-lo no
+# base quebraria `docker compose build` local. run-all.sh só aplica este override quando
+# GITHUB_ACTIONS=true, e ativa o backend bake (COMPOSE_BAKE=true) que honra cache_to.
+#
+# Scope por imagem evita colisão de cache entre os 4 alvos de build.
+services:
+  api-ci:
+    build:
+      cache_from:
+        - type=gha,scope=api-ci
+      cache_to:
+        - type=gha,scope=api-ci,mode=max
+
+  web-ci:
+    build:
+      cache_from:
+        - type=gha,scope=web-ci
+      cache_to:
+        - type=gha,scope=web-ci,mode=max
+
+  api-release:
+    build:
+      cache_from:
+        - type=gha,scope=api-release
+      cache_to:
+        - type=gha,scope=api-release,mode=max
+
+  web-release:
+    build:
+      cache_from:
+        - type=gha,scope=web-release
+      cache_to:
+        - type=gha,scope=web-release,mode=max
